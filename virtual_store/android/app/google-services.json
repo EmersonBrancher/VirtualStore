@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "911907049252",
+    "project_id": "virtual-store-ff95f",
+    "storage_bucket": "virtual-store-ff95f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:911907049252:android:7f9e99b594696511e32db1",
+        "android_client_info": {
+          "package_name": "com.brancherapps.virtualstore.virtual_store"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "911907049252-m1e1bvusnh0aep29gkc3vnofmve3cogv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBzx3dWWdzrkx7tDnTy3nbrhJNWolMY5Ck"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "911907049252-m1e1bvusnh0aep29gkc3vnofmve3cogv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
