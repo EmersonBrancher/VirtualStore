@@ -3,7 +3,7 @@ import 'package:virtual_store/tabs/home_tab.dart';
 
 class HomeScreen extends StatelessWidget {
 
-  final _paceController = PageController();
+  final _pageController = PageController();
 
   @override
   Widget build(BuildContext context) {
