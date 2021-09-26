@@ -4,15 +4,20 @@ class DrawerTile extends StatelessWidget {
 
   final IconData icon;
   final String text;
+  final PageController pageController;
+  final int page;
 
-  DrawerTile(this.icon, this.text);
+  DrawerTile(this.icon, this.text, this.pageController, this.page);
 
   @override
   Widget build(BuildContext context) {
     return Material(
       color: Colors.transparent,
       child: InkWell(
-        onTap: (){},
+        onTap: (){
+          Navigator.of(context).pop();
+          pageController.jumpToPage(page);
+        },
         child: Container(
           height: 60.0,
           child: Row(
@@ -20,7 +25,7 @@ class DrawerTile extends StatelessWidget {
               Icon(
                 icon,
                 size: 32.0,
-                color: Colors.black,
+                color: pageController.page == page? Colors.white : Colors.black,
               ),
               SizedBox(
                 width: 32.0,
@@ -29,7 +34,7 @@ class DrawerTile extends StatelessWidget {
                   text,
                 style: TextStyle(
                   fontSize: 16.0,
-                  color: Colors.black,
+                  color: pageController.page == page? Colors.white : Colors.black,
                 ),
               ),
             ],
