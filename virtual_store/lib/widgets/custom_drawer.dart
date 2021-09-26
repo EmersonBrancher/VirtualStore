@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:virtual_store/tiles/drawer_tile.dart';
 
 class CustomDrawer extends StatelessWidget {
-  const CustomDrawer({Key? key}) : super(key: key);
+
+  final PageController pageController;
+
+  CustomDrawer(this.pageController);
 
   @override
   Widget build(BuildContext context) {
@@ -11,8 +14,8 @@ class CustomDrawer extends StatelessWidget {
       decoration: BoxDecoration(
           gradient: LinearGradient(
               colors: [
-                Color.fromARGB(255, 203, 236, 241),
-                Colors.white,
+                Color.fromRGBO(49, 22, 37, 100),
+                Color.fromRGBO(114, 95, 105, 100),
               ],
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
@@ -39,7 +42,7 @@ class CustomDrawer extends StatelessWidget {
                     Positioned(
                         top: 8.0,
                         left: 0.0,
-                        child: Text("Flutter's \nClothing",
+                        child: Text("Brutal Kill",
                           style: TextStyle(
                             fontSize: 34.0,
                             fontWeight: FontWeight.bold,
@@ -62,7 +65,7 @@ class CustomDrawer extends StatelessWidget {
                             GestureDetector(
                               child: Text("Entre ou cadastre-se >",
                                 style: TextStyle(
-                                  color: Theme.of(context).primaryColor,
+                                  color: Colors.white,
                                   fontSize: 16.0,
                                   fontWeight: FontWeight.bold,
                                 ),
@@ -76,10 +79,10 @@ class CustomDrawer extends StatelessWidget {
                 ),
               ),
               Divider(),
-              DrawerTile(Icons.home, "Início"),
-              DrawerTile(Icons.list, "Produtos"),
-              DrawerTile(Icons.location_on, "Lojas"),
-              DrawerTile(Icons.playlist_add_check, "Meus Pedidos"),
+              DrawerTile(Icons.home, "Início", pageController, 0),
+              DrawerTile(Icons.list, "Produtos", pageController, 1),
+              DrawerTile(Icons.location_on, "Lojas", pageController, 2),
+              DrawerTile(Icons.playlist_add_check, "Meus Pedidos", pageController, 3),
             ],
           ),
         ],
