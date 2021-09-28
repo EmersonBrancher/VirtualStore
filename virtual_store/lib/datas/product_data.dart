@@ -14,12 +14,20 @@ class ProductData {
   late List sizes;
 
   ProductData.fromDocument(DocumentSnapshot snapshot){
-    id = snapshot.get(id);
+    id = snapshot.id;
     title = snapshot.get("title");
     description = snapshot.get("description");
-    price = snapshot.get("price");
+    price = snapshot.get("price") + 0.0;
     images = snapshot.get("images");
     sizes = snapshot.get("sizes");
+  }
+
+  Map<String, dynamic> toResumedMap(){
+    return {
+      "title": title,
+      "description": description,
+      "price": price
+    };
   }
 
 }
