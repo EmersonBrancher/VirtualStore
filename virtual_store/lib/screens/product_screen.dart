@@ -1,23 +1,28 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:virtual_store/datas/product_data.dart';
 
 class ProductScreen extends StatefulWidget {
 
   final ProductData product;
 
-  ProductScreen(this.product);
+  String size;
+
+  ProductScreen(this.product, this.size);
 
   @override
-  _ProductScreenState createState() => _ProductScreenState(product);
+  _ProductScreenState createState() => _ProductScreenState(product, size);
 }
 
 class _ProductScreenState extends State<ProductScreen> {
 
   final ProductData product;
 
-  _ProductScreenState(this.product);
+  _ProductScreenState(this.product, String size);
+
+  Object? get size => null;
+
+  set size(size) {}
 
   @override
   Widget build(BuildContext context) {
@@ -74,7 +79,51 @@ class _ProductScreenState extends State<ProductScreen> {
                       color: Colors.white,
                     ),
                   ),
-                  SizedBox(),
+                  SizedBox(
+                    height: 16.0,
+                  ),
+                  Text(
+                    "Tamanho",
+                    style: TextStyle(
+                      fontSize: 16.0,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 34.0,
+                    child: GridView(
+                      padding: EdgeInsets.symmetric(vertical: 4.0),
+                      scrollDirection: Axis.horizontal,
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 1,
+                        mainAxisSpacing: 8.0,
+                        childAspectRatio: 0.5,
+                      ),
+                      children: product.sizes.map(
+                              (s){
+                                return GestureDetector(
+                                  onTap: (){
+                                    setState(() {
+                                      size = s;
+                                    });
+                                  },
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.all(Radius.circular(4.0)),
+                                      border: Border.all(
+                                        color: s == size ? Colors.green : Colors.grey,
+                                        width: 3.0
+                                      ),
+                                    ),
+                                    width: 50.0,
+                                    alignment: Alignment.center,
+                                    child: Text(s),
+                                  ),
+                                );
+                              }
+                              ).toList(),
+                    ),
+                  ),
                 ],
               ),
           ),
