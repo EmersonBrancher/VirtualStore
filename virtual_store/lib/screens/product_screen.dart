@@ -6,23 +6,19 @@ class ProductScreen extends StatefulWidget {
 
   final ProductData product;
 
-  String size;
-
-  ProductScreen(this.product, this.size);
+  ProductScreen(this.product);
 
   @override
-  _ProductScreenState createState() => _ProductScreenState(product, size);
+  _ProductScreenState createState() => _ProductScreenState(product);
 }
 
 class _ProductScreenState extends State<ProductScreen> {
 
   final ProductData product;
 
-  _ProductScreenState(this.product, String size);
+  String size = "";
 
-  Object? get size => null;
-
-  set size(size) {}
+  _ProductScreenState(this.product);
 
   @override
   Widget build(BuildContext context) {
@@ -111,7 +107,7 @@ class _ProductScreenState extends State<ProductScreen> {
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.all(Radius.circular(4.0)),
                                       border: Border.all(
-                                        color: s == size ? Colors.green : Colors.grey,
+                                        color: s == size ? Colors.black : Colors.grey,
                                         width: 3.0
                                       ),
                                     ),
