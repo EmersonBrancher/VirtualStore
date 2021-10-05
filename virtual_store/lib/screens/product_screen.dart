@@ -83,6 +83,7 @@ class _ProductScreenState extends State<ProductScreen> {
                     style: TextStyle(
                       fontSize: 16.0,
                       fontWeight: FontWeight.w500,
+                      color: Colors.white,
                     ),
                   ),
                   SizedBox(
@@ -113,11 +114,56 @@ class _ProductScreenState extends State<ProductScreen> {
                                     ),
                                     width: 50.0,
                                     alignment: Alignment.center,
-                                    child: Text(s),
+                                    child: Text(
+                                        s,
+                                      style: TextStyle(
+                                        color: s == size ? Colors.black : Colors.white,
+                                      ),
+                                    ),
                                   ),
                                 );
                               }
                               ).toList(),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 16.0,
+                  ),
+                  SizedBox(
+                    height: 44.0,
+                    child: ElevatedButton(
+                        onPressed: size != "" ?
+                            (){} : null,
+                        child: Text(
+                            "Adicionar ao Carrinho",
+                          style: TextStyle(
+                            fontSize: 18.0,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      style: ElevatedButton.styleFrom(
+                        primary: Colors.white,
+                        onPrimary: Colors.grey,
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 16.0,
+                  ),
+                  Text(
+                    "Descrição",
+                    style: TextStyle(
+                      fontSize: 18.0,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  ),
+                  Text(
+                    product.description,
+                    style: TextStyle(
+                      fontSize: 15.0,
+                      color: Colors.white,
                     ),
                   ),
                 ],
