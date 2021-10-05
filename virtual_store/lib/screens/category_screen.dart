@@ -14,10 +14,13 @@ class CategoryScreen extends StatelessWidget {
     return DefaultTabController(
         length: 2,
         child: Scaffold(
+          backgroundColor: Color.fromRGBO(85, 63, 75, 100),
           appBar: AppBar(
             title: Text(snapshot.get("title")),
+            backgroundColor: Colors.transparent,
             centerTitle: true,
             bottom: TabBar(
+              indicatorColor: Colors.white,
                 tabs: [
                   Tab(icon: Icon(Icons.grid_on),),
                   Tab(icon: Icon(Icons.list),),

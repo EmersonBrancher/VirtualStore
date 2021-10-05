@@ -11,6 +11,7 @@ class CategoryTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
+      tileColor: Colors.white,
       leading: CircleAvatar(
         radius: 25.0,
         backgroundColor: Colors.transparent,

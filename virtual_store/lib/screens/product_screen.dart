@@ -138,7 +138,7 @@ class _ProductScreenState extends State<ProductScreen> {
                             "Adicionar ao Carrinho",
                           style: TextStyle(
                             fontSize: 18.0,
-                            color: Colors.black,
+                            color: size != "" ? Colors.black : Colors.white,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
