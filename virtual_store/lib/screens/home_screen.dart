@@ -21,9 +21,11 @@ class HomeScreen extends StatelessWidget {
           appBar: AppBar(
             title: Text("Produtos"),
             centerTitle: true,
+            backgroundColor: Colors.transparent,
           ),
           drawer: CustomDrawer(_pageController),
           body: ProductsTab(),
+          backgroundColor: Color.fromRGBO(114, 95, 105, 100),
         ),
         Container(color: Colors.yellow),
         Container(color: Colors.green),

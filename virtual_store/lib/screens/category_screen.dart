@@ -16,14 +16,17 @@ class CategoryScreen extends StatelessWidget {
         child: Scaffold(
           appBar: AppBar(
             title: Text(snapshot.get("title")),
+            backgroundColor: Colors.transparent,
             centerTitle: true,
             bottom: TabBar(
                 tabs: [
                   Tab(icon: Icon(Icons.grid_on),),
                   Tab(icon: Icon(Icons.list),),
-                ]
+                ],
+              indicatorColor: Colors.white,
             ),
           ),
+          backgroundColor: Color.fromRGBO(114, 95, 105, 100),
           body: FutureBuilder<QuerySnapshot>(
             future: FirebaseFirestore.instance.collection("products").doc(snapshot.id).collection("items").get(),
             builder: (context, snapshot) {
@@ -33,7 +36,6 @@ class CategoryScreen extends StatelessWidget {
               );
               } else {
                 return TabBarView(
-                  physics: NeverScrollableScrollPhysics(),
                   children: [
                     GridView.builder(
                         padding: EdgeInsets.all(4.0),
