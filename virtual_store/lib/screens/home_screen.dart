@@ -11,7 +11,6 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return PageView(
       controller: _pageController,
-      physics: NeverScrollableScrollPhysics(),
       children: [
         Scaffold(
           body: HomeTab(),
@@ -21,8 +20,10 @@ class HomeScreen extends StatelessWidget {
           appBar: AppBar(
             title: Text("Produtos"),
             centerTitle: true,
+            backgroundColor: Colors.transparent,
           ),
           drawer: CustomDrawer(_pageController),
+          backgroundColor: Color.fromRGBO(85, 63, 75, 100),
           body: ProductsTab(),
         ),
         Container(color: Colors.yellow),
