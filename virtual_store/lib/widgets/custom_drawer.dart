@@ -15,7 +15,7 @@ class CustomDrawer extends StatelessWidget {
       decoration: BoxDecoration(
           gradient: LinearGradient(
               colors: [
-                Color.fromRGBO(49, 22, 37, 100),
+                Color.fromRGBO(49, 22, 37, 10),
                 Color.fromRGBO(114, 95, 105, 100),
               ],
               begin: Alignment.topCenter,
@@ -25,75 +25,75 @@ class CustomDrawer extends StatelessWidget {
     );
 
     return Drawer(
-      child: Stack(
-        children: [
-          _builDrawerBack(),
-          ListView(
-            padding: EdgeInsets.only(
-              left: 32.0,
-              top: 30.0,
-            ),
+      child:           Stack(
             children: [
-              Container(
-                margin: EdgeInsets.only(bottom: 8.0),
-                padding: EdgeInsets.fromLTRB(0.0, 5.0, 16.0, 8.0),
-                height: 170.0,
-                child: Stack(
-                  children: [
-                    Positioned(
-                        top: 8.0,
-                        left: 0.0,
-                        child: Text("Brutal Kill",
-                          style: TextStyle(
-                            fontSize: 34.0,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        )
-                    ),
-                    Positioned(
-                      left: 0.0,
-                      bottom: 0.0,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "Olá, ",
-                              style: TextStyle(
-                                fontSize: 18.0,
-                                fontWeight: FontWeight.bold,
-                              ),
+            _builDrawerBack(),
+            ListView(
+              padding: EdgeInsets.only(
+                left: 32.0,
+                top: 30.0,
+              ),
+              children: [
+                Container(
+                  margin: EdgeInsets.only(bottom: 8.0),
+                  padding: EdgeInsets.fromLTRB(0.0, 5.0, 16.0, 8.0),
+                  height: 170.0,
+                  child: Stack(
+                    children: [
+                      Positioned(
+                          top: 8.0,
+                          left: 0.0,
+                          child: Text("Brutal Kill",
+                            style: TextStyle(
+                              fontSize: 34.0,
+                              fontWeight: FontWeight.bold,
                             ),
-                            GestureDetector(
-                              child: Text("Entre ou cadastre-se >",
+                          ),
+                      ),
+                      Positioned(
+                        left: 0.0,
+                        bottom: 0.0,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "Olá, ",
                                 style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 16.0,
+                                  fontSize: 18.0,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
-                              onTap: (){
-                                Navigator.of(context).push(
-                                  MaterialPageRoute(
-                                    builder: (context) => LoginScreen(),
-                                    ),
-                                );
-                              },
-                            ),
-                          ],
-                        ),
-                    ),
-                  ],
+                              GestureDetector(
+                                child: Text("Entre ou cadastre-se >",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 16.0,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                onTap: (){
+                                  Navigator.of(context).push(
+                                    MaterialPageRoute(
+                                      builder: (context) => LoginScreen(),
+                                      ),
+                                  );
+                                },
+                              ),
+                            ],
+                          ),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-              Divider(),
-              DrawerTile(Icons.home, "Início", pageController, 0),
-              DrawerTile(Icons.list, "Produtos", pageController, 1),
-              DrawerTile(Icons.location_on, "Lojas", pageController, 2),
-              DrawerTile(Icons.playlist_add_check, "Meus Pedidos", pageController, 3),
-            ],
-          ),
-        ],
-      ),
+                Divider(),
+                DrawerTile(Icons.home, "Início", pageController, 0),
+                DrawerTile(Icons.list, "Produtos", pageController, 1),
+                DrawerTile(Icons.location_on, "Lojas", pageController, 2),
+                DrawerTile(Icons.playlist_add_check, "Meus Pedidos", pageController, 3),
+              ],
+            ),
+          ],
+        ),
     );
   }
 }
