@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:scoped_model/scoped_model.dart';
+import 'package:provider/provider.dart';
 import 'package:virtual_store/models/user_model.dart';
 import 'package:virtual_store/screens/signup_screen.dart';
 
@@ -33,9 +33,9 @@ class LoginScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: ScopedModelDescendant<UserModel>(
-        builder: (context, child, model){
-          if (model.isLoading){
+      body: Consumer<UserModel>(
+        builder: (context, user, model){
+          if (user.isLoading){
             return Center(
               child: CircularProgressIndicator(),
             );
@@ -89,7 +89,7 @@ class LoginScreen extends StatelessWidget {
                         if (_formKey.currentState!.validate()) {
 
                         }
-                        model.signIn();
+                        user.signIn();
                       },
                       child: Text(
                         "Entrar",

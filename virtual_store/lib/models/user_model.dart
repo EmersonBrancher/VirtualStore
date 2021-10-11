@@ -1,7 +1,7 @@
-import 'package:scoped_model/scoped_model.dart';
+import 'package:flutter/material.dart';
 import 'dart:async';
 
-class UserModel extends Model {
+class UserModel extends ChangeNotifier {
 
   bool isLoading = false;
 
