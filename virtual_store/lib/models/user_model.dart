@@ -1,11 +1,36 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 
 class UserModel extends ChangeNotifier {
 
+  FirebaseAuth _auth = FirebaseAuth.instance;
+  late User firebaserUser;
+  Map<String, dynamic> userData = Map();
+
   bool isLoading = false;
 
-  void signUp(){
+  void signUp({required Map<String, dynamic> userData, required String password, required VoidCallback onSuccess, required VoidCallback onFailure}){
+    isLoading = true;
+    notifyListeners();
+
+    _auth.createUserWithEmailAndPassword(
+      email: userData["email"], 
+      password: password
+    ).then((user) async {
+      firebaserUser = user as User;
+
+      await _saveUserData(userData);
+
+      onSuccess();
+      isLoading = false;
+      notifyListeners();
+    }).catchError((e){
+      onFailure();
+      isLoading = false;
+      notifyListeners();
+    });
 
   }
 
@@ -26,6 +51,11 @@ class UserModel extends ChangeNotifier {
 
   void isLoggedIn(){
 
+  }
+
+  Future<Null> _saveUserData(Map<String, dynamic> userData)async{
+    this.userData = userData;
+    await FirebaseFirestore.instance.collection("user").doc(firebaserUser.uid).set(userData);
   }
 
 }
