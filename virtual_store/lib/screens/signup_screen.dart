@@ -93,9 +93,9 @@ class _SiguUpScreenState extends State<SignupScreen> {
                         if (_formKey.currentState!.validate()) {
 
                           Map<String,dynamic> userData = {
-                            "name": _nameController.text,
-                            "email": _emailController.text,
-                            "address": _addressController.text
+                            "name": _nameController.text.trim(),
+                            "email": _emailController.text.trim(),
+                            "address": _addressController.text.trim(),
                           };
 
                           user.signUp(

@@ -16,14 +16,14 @@ class UserModel extends ChangeNotifier {
     notifyListeners();
 
     _auth.createUserWithEmailAndPassword(
-      email: userData["email"], 
-      password: password
-    ).then((user) async {
-      firebaserUser = user as User;
+        email: userData["email"], 
+        password: password
+    ).then((firebaseReturn) async {
+      firebaserUser = firebaseReturn.user as User;
 
       await _saveUserData(userData);
-
       onSuccess();
+
       isLoading = false;
       notifyListeners();
     }).catchError((e){
@@ -53,7 +53,7 @@ class UserModel extends ChangeNotifier {
 
   }
 
-  Future<Null> _saveUserData(Map<String, dynamic> userData)async{
+  Future<Null> _saveUserData(Map<String, dynamic> userData) async {
     this.userData = userData;
     await FirebaseFirestore.instance.collection("user").doc(firebaserUser.uid).set(userData);
   }
