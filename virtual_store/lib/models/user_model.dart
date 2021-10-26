@@ -6,7 +6,7 @@ import 'dart:async';
 class UserModel extends ChangeNotifier {
 
   FirebaseAuth _auth = FirebaseAuth.instance;
-  late User firebaserUser;
+  User? firebaserUser;
   Map<String, dynamic> userData = Map();
 
   bool isLoading = false;
@@ -45,17 +45,30 @@ class UserModel extends ChangeNotifier {
 
   }
 
+  void signOut() async {
+    await _auth.signOut();
+
+    userData = Map();
+    firebaserUser = null;
+
+    notifyListeners();
+  }
+
   void recoverPassword(){
 
   }
 
-  void isLoggedIn(){
-
+  bool isLoggedIn(){
+    if (firebaserUser != null) {
+      return true;
+    }else{
+      return false;
+    }
   }
 
   Future<Null> _saveUserData(Map<String, dynamic> userData) async {
     this.userData = userData;
-    await FirebaseFirestore.instance.collection("user").doc(firebaserUser.uid).set(userData);
+    await FirebaseFirestore.instance.collection("user").doc(firebaserUser!.uid).set(userData);
   }
 
 }

@@ -15,10 +15,12 @@ class _SiguUpScreenState extends State<SignupScreen> {
   final _passwordController = TextEditingController();
   final _addressController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
+  final GlobalKey<ScaffoldMessengerState> _scaffoldKey = GlobalKey<ScaffoldMessengerState>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
       appBar: AppBar(
         backgroundColor: Color.fromRGBO(114, 95, 105, 100),
         title: Text("Criar Conta"),
@@ -128,11 +130,33 @@ class _SiguUpScreenState extends State<SignupScreen> {
   }
 
   void _onSuccess(){
+    _scaffoldKey.currentState!.showSnackBar(
+      SnackBar(
+          content: Text(
+              "Usuário criado com sucesso!"
+          ),
+        backgroundColor: Theme.of(context).primaryColor,
+        duration: Duration(seconds: 2),
+      ),
+    );
 
+    Future.delayed(
+        Duration(
+          seconds: 2
+      )
+    ).then((value) => Navigator.of(context).pop());
   }
 
   void _onFailure() {
-
+    _scaffoldKey.currentState!.showSnackBar(
+      SnackBar(
+        content: Text(
+            "Falha ao criar usuário!"
+        ),
+        backgroundColor: Colors.redAccent,
+        duration: Duration(seconds: 2),
+      ),
+    );
   }
   
 }
