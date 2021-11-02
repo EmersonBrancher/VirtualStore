@@ -130,7 +130,8 @@ class _SiguUpScreenState extends State<SignupScreen> {
   }
 
   void _onSuccess(){
-    _scaffoldKey.currentState!.showSnackBar(
+    ScaffoldMessenger.of(context).showSnackBar(
+    //_scaffoldKey.currentState?.showSnackBar(
       SnackBar(
           content: Text(
               "Usuário criado com sucesso!"
@@ -148,7 +149,8 @@ class _SiguUpScreenState extends State<SignupScreen> {
   }
 
   void _onFailure() {
-    _scaffoldKey.currentState!.showSnackBar(
+    ScaffoldMessenger.of(context).showSnackBar(
+    //_scaffoldKey.currentState?.showSnackBar(
       SnackBar(
         content: Text(
             "Falha ao criar usuário!"
