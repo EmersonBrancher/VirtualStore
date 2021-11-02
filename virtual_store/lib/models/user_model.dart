@@ -11,7 +11,8 @@ class UserModel extends ChangeNotifier {
 
   bool isLoading = false;
 
-  void signUp({required Map<String, dynamic> userData, required String password, required VoidCallback onSuccess, required VoidCallback onFailure}){
+  void signUp({required Map<String, dynamic> userData, required String password,
+      required VoidCallback onSuccess, required VoidCallback onFailure}){
     isLoading = true;
     notifyListeners();
 
@@ -21,9 +22,9 @@ class UserModel extends ChangeNotifier {
     ).then((firebaseReturn) async {
       firebaserUser = firebaseReturn.user as User;
 
-      await _saveUserData(userData);
-      onSuccess();
+      _saveUserData(userData);
 
+      onSuccess();
       isLoading = false;
       notifyListeners();
     }).catchError((e){
@@ -66,9 +67,9 @@ class UserModel extends ChangeNotifier {
     }
   }
 
-  Future<Null> _saveUserData(Map<String, dynamic> userData) async {
+  Future _saveUserData(Map<String, dynamic> userData) async {
     this.userData = userData;
-    await FirebaseFirestore.instance.collection("user").doc(firebaserUser!.uid).set(userData);
+    FirebaseFirestore.instance.collection("user").doc(firebaserUser!.uid).set(userData);
   }
 
 }

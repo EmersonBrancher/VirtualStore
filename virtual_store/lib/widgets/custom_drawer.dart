@@ -61,7 +61,7 @@ class CustomDrawer extends StatelessWidget {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      "Olá, ${user.isLoggedIn() ? "" : user.userData["name"] == null ? "" : user.userData["name"]}  ",
+                                      "Olá, ${user.isLoggedIn() ? user.userData["name"] : ""  }  ",
                                       style: TextStyle(
                                         fontSize: 18.0,
                                         fontWeight: FontWeight.bold,
